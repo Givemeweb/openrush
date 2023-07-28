@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-theme="emerald">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline' https://analytics.givemeweb.com"
+    />
+    <title>Openrush</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      async
+      id="umami-script"
+      src="https://analytics.givemeweb.com/script.js"
+      data-website-id="3fa19fc7-bbfc-4cd2-8e29-497ca6023baf"
+      data-auto-track="false"
+    ></script>
+    <script>
+      var script = document.querySelector('#umami-script');
+      script.addEventListener('error', function () {
+        setTimeout(() => {
+          window.electron.ipcRenderer.sendMessage('umami-script-error');
+        }, 1000);
+      });
+      script.addEventListener('load', function () {
+        console.log('you-can-use-umami-ejs');
+        setTimeout(() => {
+          window.electron.ipcRenderer.sendMessage('umami-script-ready');
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
