@@ -15,7 +15,7 @@ function Hello() {
     <div>
       <div>
         <div className="bg-[#121417] h-10 w-full flex items-center">
-          <p className="text-white text-2xl px-2">Openrush 0.1.2</p>
+          <p className="text-white text-2xl px-2">Openrush</p>
         </div>
         <div className="flex bg-[#F2F3F8]">
           <SideBar />
