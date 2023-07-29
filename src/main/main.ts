@@ -16,6 +16,9 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import '../features/database/main';
 
+let mainWindow: BrowserWindow | null = null;
+let umamiIsReady: boolean = false;
+
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -23,11 +26,29 @@ class AppUpdater {
     autoUpdater.autoDownload = false;
     autoUpdater.autoInstallOnAppQuit = true;
     autoUpdater.checkForUpdatesAndNotify();
+
+    autoUpdater.on('update-available', (info) => {
+      console.log('update-available');
+      let pth = autoUpdater.downloadUpdate();
+      mainWindow?.webContents.send('update-available');
+    });
+
+    autoUpdater.on('update-not-available', (info) => {
+      console.log('update-not-available');
+      mainWindow?.webContents.send('update-not-available');
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+      console.log('update-downloaded');
+      mainWindow?.webContents.send('update-downloaded');
+    });
+
+    autoUpdater.on('error', (info) => {
+      console.log('error');
+      mainWindow?.webContents.send('error');
+    });
   }
 }
-
-let mainWindow: BrowserWindow | null = null;
-let umamiIsReady: boolean = false;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');

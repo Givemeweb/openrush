@@ -1,6 +1,6 @@
 {
   "description": "A Semrush open-source alternative",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "electron",
     "boilerplate",
@@ -13,8 +13,8 @@
     "reload",
     "semrush"
   ],
-  "homepage": "https://github.com/Givemeweb/Openrush",
-  "repository": "https://github.com/Givemeweb/Openrush",
+  "homepage": "https://github.com/givemeweb/openrush",
+  "repository": "https://github.com/givemeweb/openrush",
   "bugs": {
     "url": "https://github.com/Givemeweb/Openrush/issues"
   },

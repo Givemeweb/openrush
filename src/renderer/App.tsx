@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'tailwindcss/tailwind.css';
@@ -14,8 +14,8 @@ function Hello() {
   return (
     <div>
       <div>
-        <div className="bg-[#121417] h-10 w-full">
-          <p className="text-white text-2xl">logo here</p>
+        <div className="bg-[#121417] h-10 w-full flex items-center">
+          <p className="text-white text-2xl px-2">Openrush 0.1.2</p>
         </div>
         <div className="flex bg-[#F2F3F8]">
           <SideBar />
@@ -48,7 +48,6 @@ function Hello() {
           </div>
         </div>
       </div>
-      )
     </div>
   );
 }
